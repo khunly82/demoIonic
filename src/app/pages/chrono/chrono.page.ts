@@ -11,16 +11,16 @@ import {
   IonToolbar
 } from '@ionic/angular/standalone';
 import {addIcons} from "ionicons";
-import {codeWorking, play, refresh, stop} from "ionicons/icons";
+import {play, refresh, stop} from "ionicons/icons";
 import {TimePipe} from "../../pipes/time.pipe";
-import {interval} from "rxjs";
+import {HeaderComponent} from "../../components/header/header.component";
 
 @Component({
   selector: 'app-chrono',
   templateUrl: './chrono.page.html',
   styleUrls: ['./chrono.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuButton, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonIcon, TimePipe]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuButton, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonIcon, TimePipe, HeaderComponent]
 })
 export class ChronoPage {
 

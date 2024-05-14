@@ -8,14 +8,20 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-item>
-        <ion-icon slot="start" name="home"></ion-icon>
-        <ion-nav-link routerLink="/home">Accueil</ion-nav-link>
-      </ion-item>
-      <ion-item>
-        <ion-icon slot="start" name="alarm"></ion-icon>
-        <ion-nav-link routerLink="/chrono">Chronomètre</ion-nav-link>
-      </ion-item>
+      <ion-menu-toggle>
+        <ion-item>
+          <ion-icon slot="start" name="home"></ion-icon>
+          <ion-nav-link routerLink="/home">Accueil</ion-nav-link>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="alarm"></ion-icon>
+          <ion-nav-link routerLink="/chrono">Chronomètre</ion-nav-link>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="list"></ion-icon>
+          <ion-nav-link routerLink="/todo-list">Todo List</ion-nav-link>
+        </ion-item>
+      </ion-menu-toggle>
     </ion-content>
   </ion-menu>
   <div class="ion-page" id="main-content">

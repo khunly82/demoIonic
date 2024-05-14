@@ -14,4 +14,8 @@ export const routes: Routes = [
     path: 'chrono',
     loadComponent: () => import('./pages/chrono/chrono.page').then( m => m.ChronoPage)
   },
+  {
+    path: 'todo-list',
+    loadComponent: () => import('./pages/todo-list/todo-list.page').then( m => m.TodoListPage)
+  },
 ];

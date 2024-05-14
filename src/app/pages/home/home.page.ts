@@ -10,13 +10,14 @@ import {
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
+import {HeaderComponent} from "../../components/header/header.component";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonMenuButton, CommonModule, FormsModule, IonButtons, IonButton, IonMenu]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonMenuButton, CommonModule, FormsModule, IonButtons, IonButton, IonMenu, HeaderComponent]
 })
 export class HomePage {
 
