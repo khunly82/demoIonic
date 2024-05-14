@@ -22,7 +22,7 @@ import {interval} from "rxjs";
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuButton, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonIcon, TimePipe]
 })
-export class ChronoPage implements OnInit {
+export class ChronoPage {
 
   time: number = 0;
   interval: any = null;
@@ -34,9 +34,6 @@ export class ChronoPage implements OnInit {
       stop: stop,
       refresh: refresh
     })
-  }
-
-  ngOnInit() {
   }
 
   start() {

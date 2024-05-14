@@ -18,11 +18,8 @@ import {
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonMenuButton, CommonModule, FormsModule, IonButtons, IonButton, IonMenu]
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }
