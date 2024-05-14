@@ -13,8 +13,8 @@
   </ion-button>
 
   <ion-list>
-    @for(item of sortedTasks; track $index) {
-      <ion-item>
+    @for(item of sortedTasks; track item.name) {
+      <ion-item (click)="displayActionsSheet(item)">
         @if(item.urgent) {
           <ion-icon slot="start" color="danger" name="warning"></ion-icon>
         }
