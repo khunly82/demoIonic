@@ -165,10 +165,10 @@ export class TodoListPage implements OnInit {
 
   private getSortedTasks() {
     return this.tasks.sort((a, b) => {
-      if(!a.urgent && b.urgent) {
-        return 1;
+      if(a.urgent && !b.urgent) {
+        return -1;
       }
-      return -1;
+      return 1;
     });
   }
 

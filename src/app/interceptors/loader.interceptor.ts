@@ -17,6 +17,7 @@ export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
   //   finalize(() => loadingController.dismiss()),
   //   map(([_, r2]) => r2)
   // )
+
   return from(promise).pipe(
     mergeMap(() => next(req)),
     finalize(() => loadingController.dismiss())
