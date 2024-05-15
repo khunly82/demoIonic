@@ -25,13 +25,11 @@
     </ion-list-header>
     @for(item of sortedTasks; track item.name) {
       <ion-item (click)="displayActionsSheet(item)">
-        @if(item.urgent) {
-          <ion-icon slot="start" color="danger" name="warning"></ion-icon>
-        }
         {{item.name}}
-        @if(item.completed) {
-          <ion-icon slot="end" name="checkmark" color="success"></ion-icon>
+        @if(item.urgent) {
+          <ion-icon slot="end" color="danger" name="warning"></ion-icon>
         }
+        <ion-icon slot="end" name="checkmark" [color]="item.completed ? 'success' : 'light' "></ion-icon>
       </ion-item>
     } @empty {
       <ion-item>

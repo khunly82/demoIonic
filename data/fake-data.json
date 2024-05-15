@@ -22,37 +22,37 @@
       "id": "db77",
       "name": "Task 1",
       "urgent": false,
-      "completed": false
+      "completed": true
     },
     {
       "id": "e0b0",
       "name": "Task 2",
       "urgent": false,
-      "completed": false
+      "completed": true
     },
     {
       "id": "6162",
       "name": "Task 3",
-      "urgent": false,
-      "completed": false
+      "urgent": true,
+      "completed": true
     },
     {
       "id": "3b9e",
       "name": "Task 4",
-      "urgent": false,
+      "urgent": true,
       "completed": false
     },
     {
       "id": "32b5",
       "name": "Task 5",
       "urgent": false,
-      "completed": false
+      "completed": true
     },
     {
       "id": "bfac",
       "name": "Task 6",
       "urgent": false,
-      "completed": false
+      "completed": true
     },
     {
       "id": "3b2f",
@@ -106,7 +106,7 @@
       "id": "d933",
       "name": "fsdfsdf",
       "urgent": false,
-      "completed": false
+      "completed": true
     },
     {
       "id": "c2a4",
@@ -129,8 +129,8 @@
     {
       "id": "31dd",
       "name": "gdfhfghfd",
-      "urgent": false,
-      "completed": false
+      "urgent": true,
+      "completed": true
     },
     {
       "id": "414c",
