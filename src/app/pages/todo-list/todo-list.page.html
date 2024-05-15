@@ -1,17 +1,25 @@
 <app-header title="Todo List"></app-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-item>
-    <ion-input [(ngModel)]="taskName" label="Nom de votre tâche" labelPlacement="floating"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-toggle [(ngModel)]="taskUrgent">Urgent</ion-toggle>
-  </ion-item>
-  <ion-button expand="full" (click)="add()">
-    <ion-icon name="add"></ion-icon>
-  </ion-button>
-
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-input [(ngModel)]="taskName" label="Nom de votre tâche" labelPlacement="floating"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-toggle [(ngModel)]="taskUrgent">Urgent</ion-toggle>
+      </ion-item>
+      <ion-button expand="block" (click)="add()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
   <ion-list>
+    <ion-list-header>
+      <ion-title>
+        Liste des tâches à effectuer
+      </ion-title>
+    </ion-list-header>
     @for(item of sortedTasks; track item.name) {
       <ion-item (click)="displayActionsSheet(item)">
         @if(item.urgent) {
@@ -21,6 +29,10 @@
         @if(item.completed) {
           <ion-icon slot="end" name="checkmark" color="success"></ion-icon>
         }
+      </ion-item>
+    } @empty {
+      <ion-item>
+        Aucunes tâches
       </ion-item>
     }
   </ion-list>

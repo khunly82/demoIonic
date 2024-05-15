@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   ActionSheetController, AlertController,
-  IonButton,
+  IonButton, IonCard, IonCardContent,
   IonContent,
   IonHeader,
   IonIcon,
   IonInput,
-  IonItem, IonList,
+  IonItem, IonList, IonListHeader,
   IonTitle, IonToggle,
   IonToolbar, ModalController, ToastController
 } from '@ionic/angular/standalone';
@@ -24,7 +24,7 @@ import {TaskService} from "../../services/task.service";
   templateUrl: './todo-list.page.html',
   styleUrls: ['./todo-list.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, HeaderComponent, IonItem, IonInput, IonButton, IonIcon, IonToggle, IonList]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, HeaderComponent, IonItem, IonInput, IonButton, IonIcon, IonToggle, IonList, IonListHeader, IonCardContent, IonCard]
 })
 export class TodoListPage implements OnInit {
 
