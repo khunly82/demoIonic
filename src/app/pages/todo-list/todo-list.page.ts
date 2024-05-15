@@ -6,7 +6,7 @@ import {
   IonButton, IonCard, IonCardContent,
   IonContent,
   IonHeader,
-  IonIcon,
+  IonIcon, IonInfiniteScroll, IonInfiniteScrollContent,
   IonInput,
   IonItem, IonList, IonListHeader, IonRefresher, IonRefresherContent,
   IonTitle, IonToggle,
@@ -24,13 +24,17 @@ import {TaskService} from "../../services/task.service";
   templateUrl: './todo-list.page.html',
   styleUrls: ['./todo-list.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, HeaderComponent, IonItem, IonInput, IonButton, IonIcon, IonToggle, IonList, IonListHeader, IonCardContent, IonCard, IonRefresher, IonRefresherContent]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, HeaderComponent, IonItem, IonInput, IonButton, IonIcon, IonToggle, IonList, IonListHeader, IonCardContent, IonCard, IonRefresher, IonRefresherContent, IonInfiniteScroll, IonInfiniteScrollContent]
 })
 export class TodoListPage implements OnInit {
 
   taskName: string = '';
   taskUrgent: boolean = false;
   sortedTasks: Task[] = [];
+
+  disabledInfiniteScroll: boolean = false;
+
+  private _page: number = 1;
 
   private _tasks: Task[] = [];
 
@@ -59,6 +63,11 @@ export class TodoListPage implements OnInit {
 
   ngOnInit() {
     this.loadData();
+  }
+
+  scroll(event: any) {
+    this._page++;
+    this.loadData(event);
   }
 
   add() {
@@ -96,9 +105,10 @@ export class TodoListPage implements OnInit {
   }
 
   loadData(event: any = null) {
-    this._taskService.getTasks().subscribe({
+    this._taskService.getTasks(this._page).subscribe({
       // methode exécutée en cas de success
       next: result => {
+        this.disabledInfiniteScroll = this.tasks.length === result.length;
         this.tasks = result;
         event?.target.complete();
       },

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import { Task } from "../models/task.model";
 import { Observable } from "rxjs";
 
@@ -14,8 +14,17 @@ export class TaskService {
     private readonly _httpClient: HttpClient,
   ) { }
 
-  getTasks() : Observable<Task[]> {
-    return this._httpClient.get<Task[]>(this.taskUrl);
+  // page = 1 _start = 0
+  // page = 2 _start = 5
+
+  getTasks(page: number) : Observable<Task[]> {
+    const params = new HttpParams({
+      fromObject: {
+        _start: 0,
+        _limit: 15 * page
+      }
+    });
+    return this._httpClient.get<Task[]>(this.taskUrl, {params});
   }
 
   addTask(task : Task) : Observable<Task> {
