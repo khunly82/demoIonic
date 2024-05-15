@@ -8,7 +8,7 @@ import {
   IonHeader,
   IonIcon,
   IonInput,
-  IonItem, IonList, IonListHeader,
+  IonItem, IonList, IonListHeader, IonRefresher, IonRefresherContent,
   IonTitle, IonToggle,
   IonToolbar, ModalController, ToastController
 } from '@ionic/angular/standalone';
@@ -24,7 +24,7 @@ import {TaskService} from "../../services/task.service";
   templateUrl: './todo-list.page.html',
   styleUrls: ['./todo-list.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, HeaderComponent, IonItem, IonInput, IonButton, IonIcon, IonToggle, IonList, IonListHeader, IonCardContent, IonCard]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, HeaderComponent, IonItem, IonInput, IonButton, IonIcon, IonToggle, IonList, IonListHeader, IonCardContent, IonCard, IonRefresher, IonRefresherContent]
 })
 export class TodoListPage implements OnInit {
 
@@ -58,14 +58,7 @@ export class TodoListPage implements OnInit {
   }
 
   ngOnInit() {
-    this._taskService.getTasks().subscribe({
-      // methode exécutée en cas de success
-      next: result => {
-        this.tasks = result;
-      },
-      // méthode exécutée en cas d'erreur
-      error: error => this.onError(error)
-    })
+    this.loadData();
   }
 
   add() {
@@ -100,6 +93,18 @@ export class TodoListPage implements OnInit {
       ]
     });
     await actionsSheet.present();
+  }
+
+  loadData(event: any = null) {
+    this._taskService.getTasks().subscribe({
+      // methode exécutée en cas de success
+      next: result => {
+        this.tasks = result;
+        event?.target.complete();
+      },
+      // méthode exécutée en cas d'erreur
+      error: error => this.onError(error)
+    })
   }
 
   private toggle(task: Task) {

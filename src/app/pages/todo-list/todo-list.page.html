@@ -1,6 +1,9 @@
 <app-header title="Todo List"></app-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content class="ion-padding" [scrollY]="true">
+  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="50" [pullMax]="150" (ionRefresh)="loadData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-card>
     <ion-card-content>
       <ion-item>
