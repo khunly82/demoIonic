@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -20,6 +20,8 @@ import {HeaderComponent} from "../../components/header/header.component";
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonMenuButton, CommonModule, FormsModule, IonButtons, IonButton, IonMenu, HeaderComponent]
 })
 export class HomePage {
+
+
 
   constructor() { }
 

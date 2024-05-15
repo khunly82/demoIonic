@@ -9,7 +9,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "fake:api": "json-server --watch data/fake-data.json"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,7 @@
     "@angular/platform-browser": "^17.0.2",
     "@angular/platform-browser-dynamic": "^17.0.2",
     "@angular/router": "^17.0.2",
+    "@capacitor/android": "6.0.0",
     "@capacitor/app": "6.0.0",
     "@capacitor/core": "6.0.0",
     "@capacitor/haptics": "6.0.0",
@@ -53,6 +55,7 @@
     "eslint-plugin-prefer-arrow": "1.2.2",
     "jasmine-core": "~5.1.0",
     "jasmine-spec-reporter": "~5.0.0",
+    "json-server": "^1.0.0-beta.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
