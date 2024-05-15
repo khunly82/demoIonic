@@ -41,12 +41,6 @@ export class TodoListPage implements OnInit {
   set tasks(newTasks: Task[]) {
     this._tasks = newTasks;
     this.sortedTasks = this.getSortedTasks();
-    this._toastController.create({
-      header: 'La liste des tâches a été modifiée',
-      duration: 3000,
-      color: 'success',
-      position: 'top'
-    }).then(toast => toast.present());
   }
 
   constructor(
@@ -78,13 +72,21 @@ export class TodoListPage implements OnInit {
     if(!this.taskName) {
       return;
     }
+
+    // création d'une nouvelle tache
     const task: Task = { name: this.taskName, urgent: this.taskUrgent, completed: false };
 
-    // vider les champs
-    this.taskName = '';
-    this.taskUrgent = false;
+    // envoyer la tache sur le serveur
+    this._taskService.addTask(task).subscribe({
+      next: result => {
+        this.tasks = [...this.tasks, result];
+        this.onUpdate();
 
-    this.tasks = [...this.tasks, task];
+        // vider les champs
+        this.taskName = '';
+        this.taskUrgent = false;
+      }, error: error => this.onError(error)
+    })
   }
 
   async displayActionsSheet(task: Task) {
@@ -101,7 +103,15 @@ export class TodoListPage implements OnInit {
   }
 
   private toggle(task: Task) {
-    task.completed = !task.completed;
+    if(task.id) {
+      this._taskService.updateTask(task.id, { ...task, completed: !task.completed }).subscribe({
+        next: result => {
+          this.tasks = this.tasks.map(t => t.id === result.id ? result : t);
+          this.onUpdate();
+        },
+        error: err => this.onError(err)
+      })
+    }
   }
 
   private async update(task: Task) {
@@ -114,7 +124,15 @@ export class TodoListPage implements OnInit {
     const { data } = await modal.onDidDismiss();
 
     if(!data.cancel) {
-      this.tasks = this.tasks.map(t => t === task ? { ...task, ...data.model } : t);
+      if(task.id) {
+        this._taskService.updateTask(task.id, { ...task, ...data.model }).subscribe({
+          next: result => {
+            this.tasks = this.tasks.map(t => t.id === result.id ? result : t);
+            this.onUpdate();
+          },
+          error: err => this.onError(err)
+        })
+      }
     }
   }
 
@@ -125,7 +143,14 @@ export class TodoListPage implements OnInit {
         { text: 'Non' },
         { text: 'Oui', handler: () => {
             // this.tasks.splice(this.tasks.indexOf(task), 1)
-            this.tasks = this.tasks.filter(t => t !== task);
+            if(task.id) {
+              this._taskService.deleteTask(task.id).subscribe({
+                next: result => {
+                  this.tasks = this.tasks.filter(t => t !== task);
+                  this.onUpdate();
+                }, error: err => this.onError(err)
+              })
+            }
           } }
       ]
     });
@@ -150,5 +175,15 @@ export class TodoListPage implements OnInit {
     })
 
     await toast.present();
+  }
+
+  private async onUpdate() {
+    const toast = await this._toastController.create({
+      header: 'La liste des tâches a été modifiée',
+      duration: 3000,
+      color: 'success',
+      position: 'top'
+    });
+    toast.present();
   }
 }
