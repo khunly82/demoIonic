@@ -3,8 +3,8 @@
     {
       "id": "37b9",
       "name": "Faire les courses",
-      "urgent": false,
-      "completed": true
+      "urgent": true,
+      "completed": false
     },
     {
       "id": "716b",
@@ -16,7 +16,7 @@
       "id": "fc7f",
       "name": "Faire du React",
       "urgent": true,
-      "completed": true
+      "completed": false
     },
     {
       "id": "db77",

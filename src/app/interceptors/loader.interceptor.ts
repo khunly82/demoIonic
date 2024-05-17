@@ -1,7 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import {LoadingController} from "@ionic/angular";
-import {inject} from "@angular/core";
-import {finalize, forkJoin, from, map, mergeMap} from "rxjs";
+import { LoadingController } from "@ionic/angular";
+import { inject } from "@angular/core";
+import { finalize, forkJoin, from, map, mergeMap } from "rxjs";
 
 export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
   const loadingController: LoadingController = inject(LoadingController);
@@ -18,8 +18,9 @@ export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
   //   map(([_, r2]) => r2)
   // )
 
-  return from(promise).pipe(
-    mergeMap(() => next(req)),
-    finalize(() => loadingController.dismiss())
-  );
+  // return from(promise).pipe(
+  //   mergeMap(() => next(req)),
+  //   finalize(() => loadingController.dismiss())
+  // );
+  return next(req).pipe(finalize(() => loadingController.dismiss()));
 };

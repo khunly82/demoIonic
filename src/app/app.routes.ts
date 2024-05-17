@@ -18,4 +18,8 @@ export const routes: Routes = [
     path: 'todo-list',
     loadComponent: () => import('./pages/todo-list/todo-list.page').then( m => m.TodoListPage)
   },
+  {
+    path: 'scanner',
+    loadComponent: () => import('./pages/scanner/scanner.page').then( m => m.ScannerPage)
+  },
 ];

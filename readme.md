@@ -58,5 +58,29 @@ export class MyComponent {
 }
 ```
 
+## Déploiement sur Android
+
+- Sur windows
+  - Installer Android Studio
+    - Installer les SDK Android
+    - Rajouter chemin du sdk dans les variables d'environnement
+      - ANDROID_HOME : c:\path\to\sdk
+    - Installer JDK (java development kit)
+      - minimum version 17
+    - Installer Gradle
+      - Ajouter dans les variables d'environnement le chemin du dossier bin de gradle
+        - path: c:\path\to\gradle
+- Sur l'appareil mobile
+  - Mettre l'appareil en mode développeur
+  - Autoriser le débogage USB
+  - Désactiver Play Protect
+- Dans le code
+  ```bash
+  ionic capacitor add android
+  ionic capacitor run android
+  ```
+- Sur Mac
+  - https://www.softcover.io/read/92780ad5/ionic_book/deploy_device
+
 
 

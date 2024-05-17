@@ -199,6 +199,6 @@ export class TodoListPage implements OnInit {
       color: 'success',
       position: 'top'
     });
-    toast.present();
+    await toast.present();
   }
 }
