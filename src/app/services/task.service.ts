@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 })
 export class TaskService {
 
-  private readonly taskUrl: string = 'http://localhost:3000/tasks';
+  private readonly taskUrl: string = 'https://my-json-server.typicode.com/khunly82/ionicServer/tasks';
 
   constructor(
     private readonly _httpClient: HttpClient,
