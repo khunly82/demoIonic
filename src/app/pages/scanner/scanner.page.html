@@ -1,0 +1,19 @@
+<app-header title="Scanner de code-barre"></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-button (click)="scan()">Scanner un code-barre</ion-button>
+
+  @if(product) {
+    <ion-card>
+      <ion-card-header>
+        <p>{{ product.product_name }}</p>
+        <small>{{ product.categories }}</small>
+      </ion-card-header>
+      <ion-card-content>
+        <img [src]="product.image_front_small_url">
+        <p>Marque: {{ product.brands }}</p>
+        <p>Nutriscore: {{ product.nutriscore_grade }}</p>
+      </ion-card-content>
+    </ion-card>
+  }
+</ion-content>
